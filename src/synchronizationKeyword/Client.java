@@ -1,4 +1,4 @@
-package mutex;
+package synchronizationKeyword;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -9,16 +9,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Client {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        //copied the entire code from callables package
-        //callable -> mutex
-
-        //java provides lock
-        Lock lock = new ReentrantLock();
+        //copied the entire code from mutex package
+        //callable -> mutex -> synchronizedKeyword
 
         Value v = new Value();
         //both the task to have same lock
-        Adder x = new Adder(v, lock);
-        Subtractor y = new Subtractor(v, lock);
+        Adder x = new Adder(v);
+        Subtractor y = new Subtractor(v);
 
         //Thread pool
         ExecutorService ex = Executors.newCachedThreadPool();
