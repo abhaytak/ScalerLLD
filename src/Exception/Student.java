@@ -13,9 +13,14 @@ public  class Student {
     //Here in the if condition code already warning i might throw this error due to some error like db connection lost.
     //that exception which is not in out control
     //So have to handle it by like below [throws ClassNotFoundException (took this eg for understanding the topic)]
-    public int doSomething(int rollNo) throws ClassNotFoundException {
+    public int doSomething(int rollNo) throws ClassNotFoundException, EvenNumberException {
         if (rollNo < 30) {
             throw new ClassNotFoundException();
+        } else if (rollNo % 2 == 0) {
+            throw new EvenNumberException();
+        } else if (rollNo % 2 != 0) {
+            //for RuntimeException, don't need to put throws or disclaimer like we did for EvenNumberException
+            throw new OddNumberException();
         }
         return 1 / 0;
     }
